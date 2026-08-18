@@ -1,0 +1,381 @@
+:root {
+  --bg: #f4f5f7;
+  --panel-bg: #ffffff;
+  --border: #e2e4ea;
+  --text: #1a1d23;
+  --text-muted: #6b7280;
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --green: #15803d;
+  --green-bg: #dcfce7;
+  --yellow: #92610a;
+  --yellow-bg: #fef3c7;
+  --red: #b91c1c;
+  --red-bg: #fee2e2;
+  --gray-bg: #eef0f3;
+  --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121317;
+    --panel-bg: #1b1d23;
+    --border: #2c2f38;
+    --text: #e9eaed;
+    --text-muted: #9aa0ab;
+    --accent: #818cf8;
+    --accent-hover: #a5b0fa;
+    --green: #4ade80;
+    --green-bg: #14351f;
+    --yellow: #fbbf24;
+    --yellow-bg: #3a2e0b;
+    --red: #f87171;
+    --red-bg: #3a1414;
+    --gray-bg: #23262e;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.topbar {
+  padding: 20px 28px;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel-bg);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.brand p {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.layout {
+  max-width: 1180px;
+  margin: 24px auto;
+  padding: 0 28px 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.panel-wide {
+  grid-column: 1 / -1;
+}
+
+.panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.panel h2 {
+  margin: 0 0 14px;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.panel-header h2 {
+  margin: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.field-row input {
+  flex: 1;
+}
+
+input,
+select {
+  font: inherit;
+  padding: 9px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+}
+
+.presets {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.chip {
+  border: 1px solid var(--border);
+  background: var(--gray-bg);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.chip:hover {
+  border-color: var(--accent);
+}
+
+button {
+  cursor: pointer;
+  font: inherit;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: 600;
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.btn-secondary {
+  background: var(--gray-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-size: 13px;
+}
+.btn-secondary:hover {
+  border-color: var(--accent);
+}
+
+.result {
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 10px;
+  background: var(--gray-bg);
+  border: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.result-id {
+  font-family: var(--mono);
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.attempt-list {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.attempt-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.error-box {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--red);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.badge-success,
+.badge-closed {
+  background: var(--green-bg);
+  color: var(--green);
+}
+
+.badge-failure,
+.badge-open,
+.badge-deadlettered,
+.badge-failed {
+  background: var(--red-bg);
+  color: var(--red);
+}
+
+.badge-halfopen,
+.badge-retrying {
+  background: var(--yellow-bg);
+  color: var(--yellow);
+}
+
+.badge-pending,
+.badge-routed {
+  background: var(--gray-bg);
+  color: var(--text-muted);
+}
+
+.health-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.health-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.health-card .psp-id {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.health-card .failures {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.hint {
+  margin: 14px 0 0;
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+td.mono {
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+tr.history-row {
+  cursor: pointer;
+}
+tr.history-row:hover {
+  background: var(--gray-bg);
+}
+
+tr.detail-row td {
+  background: var(--bg);
+  padding: 10px 14px 16px;
+}
+
+.empty {
+  color: var(--text-muted);
+  font-size: 13px;
+  padding: 10px 0;
+}
+
+@media (max-width: 860px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .field-row,
+  .health-cards {
+    grid-template-columns: 1fr;
+  }
+}

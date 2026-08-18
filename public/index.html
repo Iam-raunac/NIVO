@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PayRoute</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">₽</span>
+      <div>
+        <h1>PayRoute</h1>
+        <p>Payment routing &amp; failover engine — live demo</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel" aria-labelledby="send-heading">
+      <h2 id="send-heading">Send payment</h2>
+      <form id="payment-form">
+        <label>
+          Amount
+          <input type="number" id="amount" name="amount" value="250" min="1" step="1" required />
+        </label>
+
+        <div class="field-row">
+          <label>
+            Currency
+            <select id="currency" name="currency">
+              <option value="USD" selected>USD</option>
+              <option value="EUR">EUR</option>
+              <option value="GBP">GBP</option>
+              <option value="INR">INR</option>
+            </select>
+          </label>
+
+          <label>
+            Method
+            <select id="method" name="method">
+              <option value="card" selected>card</option>
+              <option value="upi">upi</option>
+              <option value="netbanking">netbanking</option>
+              <option value="wallet">wallet</option>
+            </select>
+          </label>
+        </div>
+
+        <label>
+          Idempotency key
+          <div class="field-row">
+            <input type="text" id="idempotencyKey" name="idempotencyKey" required />
+            <button type="button" id="regen-key" class="btn-secondary" title="Generate a new key">↻ new</button>
+          </div>
+        </label>
+
+        <div class="presets">
+          <span>Try:</span>
+          <button type="button" class="chip" data-amount="250" data-method="card">small card (250)</button>
+          <button type="button" class="chip" data-amount="30000" data-method="card">large card (30000, skips PSP_DELTA)</button>
+          <button type="button" class="chip" data-amount="500" data-method="wallet">wallet (500)</button>
+        </div>
+
+        <button type="submit" id="submit-btn" class="btn-primary">Submit transaction</button>
+      </form>
+
+      <div id="result" class="result" hidden></div>
+    </section>
+
+    <section class="panel" aria-labelledby="health-heading">
+      <div class="panel-header">
+        <h2 id="health-heading">PSP health</h2>
+        <button type="button" id="refresh-health" class="btn-secondary">Refresh</button>
+      </div>
+      <div id="health-cards" class="health-cards"></div>
+      <p class="hint">Auto-refreshes every 3s. A PSP trips to <b>Open</b> after 3 failures within a 60s window, and self-heals to <b>HalfOpen</b> after a 15s cooldown.</p>
+    </section>
+
+    <section class="panel panel-wide" aria-labelledby="history-heading">
+      <div class="panel-header">
+        <h2 id="history-heading">Transaction history</h2>
+        <button type="button" id="refresh-history" class="btn-secondary">Refresh</button>
+      </div>
+      <div id="history-table"></div>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
