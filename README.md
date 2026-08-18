@@ -1,4 +1,4 @@
-# PayRoute
+# NIVO
 
 A functional-style **payment routing & failover engine** in TypeScript — a small simulation of how a payment orchestrator (e.g. Juspay, Razorpay's routing layer, Stripe's Smart Retries) picks a PSP for a transaction, fails over across providers on decline, and self-heals unhealthy providers via a circuit breaker.
 
